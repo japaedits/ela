@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #735392; /* Cor do fundo */
+    color: #000; /* Cor do texto preta */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container central */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Animação para o boneco correndo */
+.boneco {
+    width: 15%; /* Tamanho do boneco */
+    position: absolute;
+    bottom: 60px; /* Ajuste para o boneco ficar em cima do chão */
+    animation: moveBoneco 5s infinite linear; /* Correndo infinitamente */
+    opacity: 0; /* Inicialmente invisível */
+    animation: moveBoneco 5s infinite linear, fadeIn 2s forwards; /* Adiciona fadeIn */
+}
+
+@keyframes moveBoneco {
+    0% {
+        left: -10%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Caixa onde o texto vai aparecer */
+.message-box {
+    position: absolute;
+    top: 20%;
+    width: 80%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Caixa com fundo transparente */
+    border: 2px solid #000; /* Borda preta */
+    padding: 20px;
+    overflow-y: auto; /* Permite que o texto desça quando necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    opacity: 0; /* Inicialmente invisível */
+    animation: slideIn 2s forwards; /* Animação para o texto */
+}
+
+/* Animação para o texto descer */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px); /* Começa acima da tela */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Aparece na posição final */
+    }
+}
+
+/* Estilo do texto */
+.message p {
+    font-size: 1.5em;
+    color: #000; /* Cor preta */
+    line-height: 1.5em;
+    white-space: pre-line; /* Permite que o texto quebre linhas conforme necessário */
+    opacity: 0;
+    animation: fadeInText 2s forwards; /* Efeito de fade-in */
+    animation-delay: 2s; /* Atraso antes de começar */
+}
+
+/* Efeito de fade-in para o texto */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Corações nos cantos */
+.hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heart {
+    position: absolute;
+    width: 60px; /* Tamanho do gif de coração */
+    height: 60px;
+    object-fit: cover;
+}
+
+.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Corações aleatórios atrás da caixa */
+.random-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca atrás da caixa de texto */
+}
+
+.random-heart {
+    position: absolute;
+    opacity: 0.5;
+}
+
+/* Animação para as imagens caírem */
+.falling-images .falling-image {
+    position: absolute;
+    top: -100px; /* Início acima da tela */
+    opacity: 0;
+    animation: fallImage 4s forwards;
+    width: 50px; /* Imagem bem menor */
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%); /* Para que as imagens fiquem centralizadas em cima da caixa */
+}
+
+/* Animação para a queda das imagens */
+@keyframes fallImage {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+        top: 0;
+    }
+    50% {
+        top: 50px; /* Ajuste para que caia até o topo da caixa */
+    }
+    75% {
+        top: 100px;
+    }
+    100% {
+        top: 150px; /* Chegando na posição final */
+    }
+}
+
+/* Controle de delay para as imagens */
+#img1 {
+    animation-delay: 3s;
+}
+
+#img2 {
+    animation-delay: 5s;
+}
+
+#img3 {
+    animation-delay: 7s;
+}
+
+#img4 {
+    animation-delay: 9s;
+}
+
+#img5 {
+    animation-delay: 11s;
+}
